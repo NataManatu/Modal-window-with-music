@@ -77,6 +77,7 @@ function closeModal() {
     }
     else {
         modal.remove();
+        myMuseStop()
         
     }
 }
