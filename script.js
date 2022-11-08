@@ -39,14 +39,14 @@ openModalButton.addEventListener("click", () => {
     const buttonOk = document.createElement('button');
     buttonOk.setAttribute = ("type", "button");
     buttonOk.className = "modalOkButton";
-    buttonOk.innerText = "Ok";
+    buttonOk.innerText = "PLAY";
 
 
 
     const buttonCansel = document.createElement('button');
     buttonCansel.setAttribute = ("type", "button");
     buttonCansel.className = "modalCanselButton";
-    buttonCansel.innerText = "Oтмена";
+    buttonCansel.innerText = "PAUSE";
 
 
 
@@ -84,7 +84,7 @@ function closeModal() {
 
 
 const audio = new Audio();
-audio.src = "L.mp3";
+audio.src = "Z.mp3";
 audio.autoplay = false;
 
 
