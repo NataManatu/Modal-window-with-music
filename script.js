@@ -17,56 +17,40 @@ openModalButton.addEventListener("click", () => {
     const wrapper = document.createElement('div');
     wrapper.className = "modalWrapper";
 
-
     const backdrop = document.createElement('div');
     backdrop.className = "backdrop";
     wrapper.appendChild(backdrop);
-
-
+    backdrop.addEventListener("click", closeModal)
 
     const modalContainer = document.createElement('div');
     modalContainer.className = "modal";
     wrapper.appendChild(modalContainer);
 
-
-    const cross = document.createElement('button');
-    cross.setAttribute = ("type", "button");
-    cross.className = "modalCross";
-    cross.innerText = "x"
-
-
-
-    const buttonOk = document.createElement('button');
-    buttonOk.setAttribute = ("type", "button");
-    buttonOk.className = "modalOkButton";
-    buttonOk.innerText = "PLAY";
-
-
-
-    const buttonCansel = document.createElement('button');
-    buttonCansel.setAttribute = ("type", "button");
-    buttonCansel.className = "modalCanselButton";
-    buttonCansel.innerText = "PAUSE";
-
-
-
-    backdrop.addEventListener("click", closeModal)
-    cross.addEventListener("click", closeModal)
-    buttonOk.addEventListener("click", myMuse)
-    buttonCansel.addEventListener("click", myMuseStop)
-
+    const cross = createModalButton("modalCross", "x", closeModal);
+    const buttonOk = createModalButton("modalOkButton", "PLAY", myMuse);
+    const buttonCansel = createModalButton("modalCanselButton", "PAUSE", myMuseStop);
 
 
     modalContainer.appendChild(cross);
     modalContainer.appendChild(buttonOk);
     modalContainer.appendChild(buttonCansel);
 
-
-
     document.body.appendChild(wrapper);
 
-  
+
 });
+
+function createModalButton(className, text, func) {
+    const button = document.createElement("button");
+    button.setAttribute = ("type", "button");
+    button.className = className;
+    button.innerText = text;
+    button.addEventListener("click", () => {
+        func();
+    });
+    return button;
+
+}
 
 function closeModal() {
     const modal = document.querySelector('.modalWrapper');
@@ -78,27 +62,23 @@ function closeModal() {
     else {
         modal.remove();
         myMuseStop()
-        
+
     }
 }
-
 
 const audio = new Audio();
 audio.src = "Z.mp3";
 audio.autoplay = false;
 
-
 function myMuse() {
-   audio.play()
-   audio.autoplay = !audio.autoplay
+    audio.play()
+    audio.autoplay = !audio.autoplay
 }
 
 function myMuseStop() {
     audio.pause()
     audio.autoplay = !audio.autoplay
- }
-
-
+}
 
 
 
